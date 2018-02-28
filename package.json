@@ -1,0 +1,20 @@
+{
+  "name": "self_koa_blog",
+  "version": "0.0.1",
+  "description": "个人blog后端",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "NODE_ENV=dev nodemon -w ./app/ index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:masongzhi/self_koa_blog.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.5.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.0.7"
+  }
+}
