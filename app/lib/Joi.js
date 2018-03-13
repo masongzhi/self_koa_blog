@@ -10,7 +10,9 @@ Joi.validate = (value, schema,
     allowUnknown: false
   }) => {
   const param = _.pick(value, Object.keys(schema))
-  return validate(param, schema, options)
+  const {value: result, error} = validate(param, schema, options)
+  if (error) throw error
+  return result
 }
 
 module.exports = Joi

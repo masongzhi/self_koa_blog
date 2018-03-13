@@ -1,4 +1,5 @@
 const ArticleService = require('../service/ArticleService')
+const {Joi} = require('../lib')
 
 class ArticleController {
   static async getArticle (ctx) {
@@ -9,8 +10,14 @@ class ArticleController {
   }
 
   static async setArticle (ctx) {
-    const param = ctx.request.body
-    const result = await ArticleService.setArticle(param)
+    const schema = {
+      title: Joi.string().required(),
+      content: Joi.string().required(),
+      label: Joi.array().items(Joi.string()),
+      time: Joi.number().strict()
+    }
+    const value = Joi.validate(ctx.request.body, schema)
+    const result = await ArticleService.setArticle(value)
 
     ctx.body = result
   }

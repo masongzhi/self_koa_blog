@@ -17,6 +17,7 @@
     "config": "^1.30.0",
     "joi": "^13.1.2",
     "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.14",

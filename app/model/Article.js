@@ -4,7 +4,6 @@ class Article extends BaseModel {
   constructor () {
     super()
     this.name = 'article'
-    this.db = 'blog'
     this.schema = {
       title: { type: String, required: true },
       content: { type: String, required: true },

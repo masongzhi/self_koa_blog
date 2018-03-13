@@ -6,9 +6,11 @@ const config = require('config')
 const Logger = require('./app/lib/Logger')
 const time = Date.now()
 const port = config.get('port')
+const bodyParser = require('koa-bodyparser')
 
 require('./config/initializer')
 
+app.use(bodyParser())
 app.use(router.routes(), router.allowedMethods());
 
 const server = http.createServer(app.callback());
