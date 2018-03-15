@@ -2,9 +2,15 @@ const ArticleService = require('../service/ArticleService')
 const {Joi} = require('../lib')
 
 class ArticleController {
-  static async getArticle (ctx) {
+  static async getArticles (ctx) {
     const param = ctx.query
-    const result = await ArticleService.getArticle(param)
+    const result = await ArticleService.getArticles(param)
+
+    ctx.body = result
+  }
+
+  static async getArticle (ctx) {
+    const result = await ArticleService.getArticle(ctx.params)
 
     ctx.body = result
   }

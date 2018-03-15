@@ -6,7 +6,8 @@ const router = require('koa-router')({
 });
 router.use('/', responseFormatter('^/api'))
 
-router.get('/article', ArticleController.getArticle);
+router.get('/article', ArticleController.getArticles);
+router.get('/article/:id', ArticleController.getArticle);
 router.post('/article', ArticleController.setArticle);
 
 module.exports = router;
