@@ -11,7 +11,10 @@ class ArticleService {
     return await Article.findOne({_id: id})
   }
   async setArticle (param) {
-    await Article.create(param)
+    await Article.create({
+      ...param,
+      time: new Date().getTime()
+    })
     return 'success'
   }
 }
