@@ -3,8 +3,12 @@ const {Joi} = require('../lib')
 
 class ArticleController {
   static async getArticles (ctx) {
-    const param = ctx.query
-    const result = await ArticleService.getArticles(param)
+    const schema = {
+      page: Joi.number(),
+      limit: Joi.number()
+    }
+    const value = Joi.validate(ctx.query, schema)
+    const result = await ArticleService.getArticles(value)
 
     ctx.body = result
   }
