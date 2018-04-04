@@ -4,7 +4,7 @@ module.exports = {
   application: 'self-koa_blog',
   root: path.resolve(__dirname, '..'),
   configFile: path.resolve(__dirname, __filename),
-  isProd: false,
+  isProd: true,
   database: {
     redis: {
       host: 'localhost',
@@ -13,8 +13,8 @@ module.exports = {
     mongoDebug: true,
     mongodb: [
       {
-        name: 'new_bear',
-        url: 'localhost:27017/blog',
+        name: 'blog',
+        url: 'mongodb://localhost:27017/blog',
         options: {}
       }
     ]
