@@ -7,14 +7,15 @@ module.exports = {
   isProd: true,
   database: {
     redis: {
-      host: 'localhost',
-      port: '6379'
+      host: process.env.REDIS_HOST,
+      port: process.env.REDIS_PORT,
+      password: process.env.REDIS_PASSWORD
     },
-    mongoDebug: true,
+    mongoDebug: false,
     mongodb: [
       {
         name: 'blog',
-        url: 'mongodb://localhost:27017/blog',
+        url: process.env.NEW_KOALA_URL,
         options: {}
       }
     ]

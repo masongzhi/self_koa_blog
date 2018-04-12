@@ -5,7 +5,7 @@
       "exec_interpreter": "node8",
       "script": "./index.js",
       "watch": false,
-      "instances" : "3",
+      "instances" : "1",
       "exec_mode" : "cluster",
       "pid_file": "pids/koala.pid",
       "merge_logs": true,
