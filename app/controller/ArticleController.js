@@ -31,6 +31,29 @@ class ArticleController {
 
     ctx.body = result
   }
+
+  // L: likes, V: views, C: comments
+  static async addLVC (ctx) {
+    const schema = {
+      type: Joi.string().only(['likes', 'views', 'comments']).required(),
+      id: Joi.string().length(24).required()
+    }
+    const value = Joi.validate(ctx.request.body, schema)
+    const result = await ArticleService.addLVC(value)
+
+    ctx.body = result
+  }
+
+  static async subLVC (ctx) {
+    const schema = {
+      type: Joi.string().only(['likes', 'views', 'comments']).required(),
+      id: Joi.string().length(24).required()
+    }
+    const value = Joi.validate(ctx.request.body, schema)
+    const result = await ArticleService.subLVC(value)
+
+    ctx.body = result
+  }
 }
 
 module.exports = ArticleController
