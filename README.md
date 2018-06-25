@@ -1,7 +1,7 @@
 # self_koa_blog
 personal blog backend by koa2
 
-to run this appliation, you can install and run [font-end appliatino](https://github.com/masongzhi/blog)
+to run this appliation, you can install and run [font-end appliation](https://github.com/masongzhi/blog)
 
 # installation
 ```bash
