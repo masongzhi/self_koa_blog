@@ -15,7 +15,7 @@ module.exports = {
     mongodb: [
       {
         name: 'blog',
-        url: process.env.NEW_KOALA_URL,
+        url: process.env.MONGO_URL,
         options: {}
       }
     ]
