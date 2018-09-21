@@ -2,11 +2,9 @@
 FROM node:8-alpine as build
 WORKDIR /app
 COPY ./package.json .
-COPY ./package-lock.json .
+COPY ./yarn.lock .
 
-RUN npm install --build-from-source --registry=https://registry.npm.taobao.org \
-    --disturl=https://npm.taobao.org/mirrors/node && \
-    npm cache verify
+RUN npm install -g yarn && yarn install
 
 FROM node:8-alpine as prod
 WORKDIR /app

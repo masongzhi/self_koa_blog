@@ -1,10 +1,10 @@
-const responseFormatter = require('./middleware/ResponseFormatter')
-const ArticleController = require('./controller/ArticleController')
+const responseFormatter = require('./middleware/ResponseFormatter');
+const ArticleController = require('./controller/ArticleController');
 
 const router = require('koa-router')({
-  prefix: '/api/v1'
+  prefix: '/api/v1',
 });
-router.use('/', responseFormatter('^/api'))
+router.use('/', responseFormatter('^/api'));
 
 router.get('/article', ArticleController.getArticles);
 router.get('/article/:id', ArticleController.getArticle);
