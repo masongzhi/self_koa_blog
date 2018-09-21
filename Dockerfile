@@ -11,5 +11,5 @@ WORKDIR /app
 COPY . .
 COPY --from=build /app/node_modules ./node_modules
 ENV TZ=Asia/Shanghai
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
 EXPOSE 3002
