@@ -1,5 +1,5 @@
 const { Article } = require('../model');
-const AppError = require('../lib/AppError');
+// const AppError = require('../lib/AppError');
 
 class ArticleService {
   async getArticles({ page = 1, limit = 10 }) {
