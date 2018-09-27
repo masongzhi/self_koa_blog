@@ -26,13 +26,14 @@ function setTokenToCookie(ctx, token) {
 class ArticleController {
   static async register(ctx) {
     const schema = {
+      email: Joi.string().required(),
       username: Joi.string().required(),
       password: Joi.string().required(),
     };
     const value = Joi.validate(ctx.request.body, schema);
-    const result = await UserService.register(value);
+    const user = await UserService.register(value);
 
-    ctx.body = result;
+    ctx.body = { user };
   }
   static async login(ctx) {
     const schema = {

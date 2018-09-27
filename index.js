@@ -6,16 +6,21 @@ const time = Date.now();
 const port = config.get('port');
 const bodyParser = require('koa-bodyparser');
 const router = require('./app/router');
-const Logger = require('./app/lib/Logger');
+const { Logger, Const } = require('./app/lib');
 const ProtectedHandler = require('./app/middleware/ProtectedHandler');
-const AuthValidate = require('./app/middleware/AuthValidate');
+const { validate } = require('./app/middleware/AuthValidate');
 
 require('./config/initializer');
 
 // 401处理
 app.use(ProtectedHandler);
 // jwt验证
-app.use(AuthValidate([/^\/api\/v1\/public/]));
+app.use(
+  validate({
+    path: [/^\/api\/v1\/public/],
+    tokenSecret: Const.TOKEN_SECRET,
+  })
+);
 
 app.use(bodyParser());
 app.use(router.routes(), router.allowedMethods());

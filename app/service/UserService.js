@@ -4,10 +4,10 @@ const bcrypt = require('bcrypt');
 
 class UserService {
   async register(param) {
-    const user = await User.findOne({ username: param.username });
-    if (user) throw new AppError('用户名' + param.username + '已经注册过');
-    await User.create(param);
-    return 'success';
+    const oldUser = await User.findOne({ username: param.username });
+    if (oldUser) throw new AppError('用户名' + param.username + '已经注册过');
+    const user = await User.create(param);
+    return user;
   }
   async login(param) {
     const { username, password } = param;
