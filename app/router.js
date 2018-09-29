@@ -1,4 +1,5 @@
 const responseFormatter = require('./middleware/ResponseFormatter');
+const updateToken = require('./middleware/UpdateToken');
 const { allow } = require('./middleware/AuthValidate');
 const ArticleController = require('./controller/ArticleController');
 const UserController = require('./controller/UserController');
@@ -6,7 +7,7 @@ const UserController = require('./controller/UserController');
 const router = require('koa-router')({
   prefix: '/api/v1',
 });
-router.use('/', responseFormatter('^/api'));
+router.use('/', updateToken, responseFormatter('^/api'));
 
 // 需要权限接口
 router.post('/article', allow('root'), ArticleController.setArticle);

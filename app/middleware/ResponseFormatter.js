@@ -1,7 +1,5 @@
 const _ = require('lodash');
-const AppError = require('../lib/AppError');
-const logger = require('../lib/Logger');
-// const errorNames = require('../lib/errorInfo')
+const { AppError, Logger } = require('../lib');
 
 module.exports = pattern => {
   return async (ctx, next) => {
@@ -14,30 +12,27 @@ module.exports = pattern => {
       return responseFormatter(ctx);
     } catch (error) {
       if (error instanceof AppError) {
-        logger.info('业务逻辑错误 ', error);
+        Logger.info('业务逻辑错误 ', error);
         ctx.status = 200;
         ctx.body = {
           code: error.code,
           message: error.message,
         };
-        return;
       } else if (error.isJoi) {
-        logger.info('参数校验错误 ', error);
+        Logger.info('参数校验错误 ', error);
         const msg = error.details.map(item => item.message).join(',');
         ctx.status = 200;
         ctx.body = {
           code: -1,
           message: msg,
         };
-        return;
       } else {
-        logger.error('系统内部错误 ', error);
+        Logger.error('系统内部错误 ', error);
         ctx.status = 200;
         ctx.body = {
           code: 1,
           message: error.message,
         };
-        return;
       }
     }
 

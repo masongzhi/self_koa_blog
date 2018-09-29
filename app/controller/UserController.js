@@ -13,14 +13,7 @@ function genToken(user) {
 }
 
 function setTokenToCookie(ctx, token) {
-  ctx.cookies.set('token', token, {
-    // domain: '.kaolalicai.cn',  // 写cookie所在的域名
-    path: '/', // 写cookie所在的路径
-    maxAge: 30 * 60 * 1000, // cookie有效时长
-    // expires: moment().add(30,''),  // cookie失效时间
-    httpOnly: true, // 是否只用于http请求中获取
-    // overwrite: true  // 是否允许重写
-  });
+  ctx.cookies.set('token', token, Const.TOKEN_CONFIG);
 }
 
 class ArticleController {
@@ -33,7 +26,12 @@ class ArticleController {
     const value = Joi.validate(ctx.request.body, schema);
     const user = await UserService.register(value);
 
-    ctx.body = { user };
+    const token = genToken(user);
+    await setTokenToCookie(ctx, token);
+    ctx.body = {
+      user,
+      token,
+    };
   }
   static async login(ctx) {
     const schema = {
