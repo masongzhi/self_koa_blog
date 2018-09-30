@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "serve": "NODE_ENV=dev nodemon -w ./app/ index.js",
+    "dev": "NODE_ENV=dev nodemon -w ./app/ index.js",
     "format": "prettier --write 'app/**/*.js'"
   },
   "repository": {

@@ -11,7 +11,7 @@ class ArticleService {
   }
 
   async getArticle({ id }) {
-    return await Article.findOne({ _id: id });
+    return await Article.findById(id);
   }
 
   async setArticle(param) {
@@ -24,15 +24,25 @@ class ArticleService {
     return 'success';
   }
 
-  async addLVC({ id, type }) {
-    const data = await Article.findById(id);
-    await Article.updateOne({ _id: id }, { [type]: ++data[type] });
+  async delArticle({ articleId }) {
+    await Article.findByIdAndDelete(articleId);
     return 'success';
   }
 
-  async subLVC({ id, type }) {
-    const data = await Article.findById(id);
-    await Article.updateOne({ _id: id }, { [type]: --data[type] });
+  async updateArticle(param) {
+    await Article.findByIdAndUpdate(param.articleId, param);
+    return 'success';
+  }
+
+  async addLVC({ articleId, type }) {
+    const data = await Article.findById(articleId);
+    await Article.updateOne({ _id: articleId }, { [type]: ++data[type] });
+    return 'success';
+  }
+
+  async subLVC({ articleId, type }) {
+    const data = await Article.findById(articleId);
+    await Article.updateOne({ _id: articleId }, { [type]: --data[type] });
     return 'success';
   }
 }

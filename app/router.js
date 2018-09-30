@@ -11,12 +11,15 @@ router.use('/', updateToken, responseFormatter('^/api'));
 
 // 需要权限接口
 router.post('/article', allow('root'), ArticleController.setArticle);
+router.delete('/article', allow('root'), ArticleController.delArticle);
+router.put('/article', allow('root'), ArticleController.updateArticle);
+// 增加喜欢和评论数
+router.post('/article/addLC', ArticleController.addLC);
+router.post('/article/subLC', ArticleController.subLC);
 // 无需权限接口
 router.post('/public/register', UserController.register);
 router.post('/public/login', UserController.login);
 router.get('/public/article', ArticleController.getArticles);
 router.get('/public/article/:id', ArticleController.getArticle);
-router.post('/public/article/addLVC', ArticleController.addLVC);
-router.post('/public/article/subLVC', ArticleController.subLVC);
 
 module.exports = router;

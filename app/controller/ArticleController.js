@@ -24,7 +24,6 @@ class ArticleController {
       title: Joi.string().required(),
       content: Joi.string().required(),
       label: Joi.array().items(Joi.string()),
-      time: Joi.number().strict(),
     };
     const value = Joi.validate(ctx.request.body, schema);
     const result = await ArticleService.setArticle(value);
@@ -32,13 +31,40 @@ class ArticleController {
     ctx.body = result;
   }
 
-  // L: likes, V: views, C: comments
-  static async addLVC(ctx) {
+  static async delArticle(ctx) {
+    const schema = {
+      articleId: Joi.string()
+        .length(24)
+        .required(),
+    };
+    const value = Joi.validate(ctx.request.body, schema);
+    const result = await ArticleService.delArticle(value);
+
+    ctx.body = result;
+  }
+
+  static async updateArticle(ctx) {
+    const schema = {
+      articleId: Joi.string()
+        .length(24)
+        .required(),
+      title: Joi.string().required(),
+      content: Joi.string().required(),
+      label: Joi.array().items(Joi.string()),
+    };
+    const value = Joi.validate(ctx.request.body, schema);
+    const result = await ArticleService.updateArticle(value);
+
+    ctx.body = result;
+  }
+
+  // L: likes, C: comments
+  static async addLC(ctx) {
     const schema = {
       type: Joi.string()
-        .only(['likes', 'views', 'comments'])
+        .only(['likes', 'comments'])
         .required(),
-      id: Joi.string()
+      articleId: Joi.string()
         .length(24)
         .required(),
     };
@@ -48,17 +74,32 @@ class ArticleController {
     ctx.body = result;
   }
 
-  static async subLVC(ctx) {
+  static async subLC(ctx) {
     const schema = {
       type: Joi.string()
-        .only(['likes', 'views', 'comments'])
+        .only(['likes', 'comments'])
         .required(),
-      id: Joi.string()
+      articleId: Joi.string()
         .length(24)
         .required(),
     };
     const value = Joi.validate(ctx.request.body, schema);
     const result = await ArticleService.subLVC(value);
+
+    ctx.body = result;
+  }
+
+  static async addComment(ctx) {
+    const schema = {
+      articleId: Joi.string()
+        .length(24)
+        .required(),
+      title: Joi.string().required(),
+      content: Joi.string().required(),
+      label: Joi.array().items(Joi.string()),
+    };
+    const value = Joi.validate(ctx.request.body, schema);
+    const result = await ArticleService.updateArticle(value);
 
     ctx.body = result;
   }
