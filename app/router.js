@@ -3,9 +3,10 @@ const updateToken = require('./middleware/UpdateToken');
 const { allow } = require('./middleware/AuthValidate');
 const ArticleController = require('./controller/ArticleController');
 const UserController = require('./controller/UserController');
+const { Const } = require('./lib');
 
 const router = require('koa-router')({
-  prefix: '/api/v1',
+  prefix: Const.PREFIX,
 });
 router.use('/', updateToken, responseFormatter('^/api'));
 
@@ -13,6 +14,7 @@ router.use('/', updateToken, responseFormatter('^/api'));
 router.post('/article', allow('root'), ArticleController.setArticle);
 router.delete('/article', allow('root'), ArticleController.delArticle);
 router.put('/article', allow('root'), ArticleController.updateArticle);
+
 // 增加喜欢和评论数
 router.post('/article/addLC', ArticleController.addLC);
 router.post('/article/subLC', ArticleController.subLC);

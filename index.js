@@ -7,17 +7,14 @@ const port = config.get('port');
 const bodyParser = require('koa-bodyparser');
 const router = require('./app/router');
 const { Logger, Const } = require('./app/lib');
-const ProtectedHandler = require('./app/middleware/ProtectedHandler');
 const { validate } = require('./app/middleware/AuthValidate');
 
 require('./config/initializer');
 
-// 401处理
-app.use(ProtectedHandler);
 // jwt验证
 app.use(
   validate({
-    path: [/^\/api\/v1\/public/],
+    path: Const.VALIDATE_PATH,
     tokenSecret: Const.TOKEN_SECRET,
   })
 );

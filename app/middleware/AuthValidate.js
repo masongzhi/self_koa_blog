@@ -14,6 +14,12 @@ module.exports = {
         });
       } catch (e) {
         Logger.info('err', e.message);
+        // 不使用ctx.throw，前端不好统一处理
+        ctx.body = {
+          code: 3,
+          message: '请登录后再进行操作',
+        };
+        // ctx.throw(401, '请登录后再进行操作')
       }
     };
   },
@@ -24,7 +30,7 @@ module.exports = {
     return async function(ctx, next) {
       if (ctx.state.user) {
         const role = ctx.state.user.role;
-        debug('current role ', role);
+        Logger.debug('current role ', role);
         if (!roles.includes(role)) ctx.throw(401, '该用户没有权限执行此操作');
       }
       await next();

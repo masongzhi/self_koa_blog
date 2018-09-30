@@ -42,7 +42,7 @@ class ArticleController {
     const user = await UserService.login(value);
 
     const token = genToken(user);
-    await setTokenToCookie(ctx, token);
+    setTokenToCookie(ctx, token);
     ctx.body = {
       user,
       token,
