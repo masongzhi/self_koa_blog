@@ -18,6 +18,8 @@ router.put('/article', allow('root'), ArticleController.updateArticle);
 // 增加喜欢和评论数
 router.post('/article/addLC', ArticleController.addLC);
 router.post('/article/subLC', ArticleController.subLC);
+router.post('/article/addComment', ArticleController.addComment);
+
 // 无需权限接口
 router.post('/public/register', UserController.register);
 router.post('/public/login', UserController.login);

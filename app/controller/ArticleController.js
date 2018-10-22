@@ -94,12 +94,10 @@ class ArticleController {
       articleId: Joi.string()
         .length(24)
         .required(),
-      title: Joi.string().required(),
       content: Joi.string().required(),
-      label: Joi.array().items(Joi.string()),
     };
     const value = Joi.validate(ctx.request.body, schema);
-    const result = await ArticleService.updateArticle(value);
+    const result = await ArticleService.addComment({ ...value, user: ctx.state.user });
 
     ctx.body = result;
   }

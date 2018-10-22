@@ -1,4 +1,4 @@
-const { Article } = require('../model');
+const { Article, Comment } = require('../model');
 // const AppError = require('../lib/AppError');
 
 class ArticleService {
@@ -43,6 +43,11 @@ class ArticleService {
   async subLVC({ articleId, type }) {
     const data = await Article.findById(articleId);
     await Article.updateOne({ _id: articleId }, { [type]: --data[type] });
+    return 'success';
+  }
+
+  async addComment(param) {
+    await Comment.create(param);
     return 'success';
   }
 }
