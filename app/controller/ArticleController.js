@@ -88,19 +88,6 @@ class ArticleController {
 
     ctx.body = result;
   }
-
-  static async addComment(ctx) {
-    const schema = {
-      articleId: Joi.string()
-        .length(24)
-        .required(),
-      content: Joi.string().required(),
-    };
-    const value = Joi.validate(ctx.request.body, schema);
-    const result = await ArticleService.addComment({ ...value, user: ctx.state.user });
-
-    ctx.body = result;
-  }
 }
 
 module.exports = ArticleController;

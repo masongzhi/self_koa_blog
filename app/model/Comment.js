@@ -7,7 +7,16 @@ class Comment extends BaseModel {
     this.schema = {
       articleId: { type: String, required: true },
       content: { type: String, required: true },
-      user: { type: Object, required: true },
+      author: { type: Object, required: true },
+      childComments: [
+        {
+          commentId: { type: String, required: true },
+          content: { type: String, required: true },
+          replyAuthor: { type: Object, required: true },
+          createdTime: { type: Number, required: true },
+          author: { type: Object, required: true },
+        },
+      ],
     };
   }
 }

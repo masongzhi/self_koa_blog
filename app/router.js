@@ -2,6 +2,7 @@ const responseFormatter = require('./middleware/ResponseFormatter');
 const updateToken = require('./middleware/UpdateToken');
 const { allow } = require('./middleware/AuthValidate');
 const ArticleController = require('./controller/ArticleController');
+const CommentController = require('./controller/CommentController');
 const UserController = require('./controller/UserController');
 const { Const } = require('./lib');
 
@@ -18,7 +19,9 @@ router.put('/article', allow('root'), ArticleController.updateArticle);
 // 增加喜欢和评论数
 router.post('/article/addLC', ArticleController.addLC);
 router.post('/article/subLC', ArticleController.subLC);
-router.post('/article/addComment', ArticleController.addComment);
+
+router.post('/comment/add', CommentController.add);
+router.post('/comment/reply', CommentController.reply);
 
 // 无需权限接口
 router.post('/public/register', UserController.register);
