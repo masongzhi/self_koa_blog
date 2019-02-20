@@ -20,6 +20,8 @@ router.put('/article', allow('root'), ArticleController.updateArticle);
 router.post('/article/addLC', ArticleController.addLC);
 router.post('/article/subLC', ArticleController.subLC);
 
+router.get('/comment/get', CommentController.get);
+router.get('/comment/get/:id', CommentController.getById);
 router.post('/comment/add', CommentController.add);
 router.post('/comment/reply', CommentController.reply);
 

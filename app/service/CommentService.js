@@ -2,13 +2,22 @@ const { Comment, User } = require('../model');
 const { getCurrentTimestamp } = require('../lib/DateUtil');
 
 class CommentService {
+  async get(param) {
+    const data = await Comment.find({ articleId: param.articleId });
+    return data;
+  }
+
+  async getById(param) {
+    const data = await Comment.findById(param.id);
+    return data;
+  }
+
   async add(param) {
     await Comment.create(param);
     return 'success';
   }
 
   async reply(param) {
-    const replyAuthor = await User.findById(param.replyUserId);
     const comment = await Comment.findById(param.commentId);
     await Comment.findByIdAndUpdate(param.commentId, {
       childComments: [
@@ -16,7 +25,6 @@ class CommentService {
         {
           ...param,
           createdTime: getCurrentTimestamp(),
-          replyAuthor,
         },
       ],
     });
