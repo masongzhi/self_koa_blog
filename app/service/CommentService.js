@@ -1,5 +1,6 @@
-const { Comment, User } = require('../model');
+const { Comment } = require('../model');
 const { getCurrentTimestamp } = require('../lib/DateUtil');
+const AricleService = require('./ArticleService');
 
 class CommentService {
   async get(param) {
@@ -14,6 +15,10 @@ class CommentService {
 
   async add(param) {
     await Comment.create(param);
+    await AricleService.addLVC({
+      articleId: param.articleId,
+      type: 'comments',
+    });
     return 'success';
   }
 
