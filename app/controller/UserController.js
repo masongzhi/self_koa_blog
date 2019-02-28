@@ -48,6 +48,8 @@ class ArticleController {
       token,
     };
   }
+
+  static async testUpload(ctx) {}
 }
 
 module.exports = ArticleController;

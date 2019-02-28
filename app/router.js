@@ -30,5 +30,6 @@ router.post('/public/login', UserController.login);
 router.get('/public/article', ArticleController.getArticles);
 router.get('/public/article/:id', ArticleController.getArticle);
 router.get('/public/comment/get', CommentController.get);
+router.post('/public/testUpload', UserController.testUpload);
 
 module.exports = router;
