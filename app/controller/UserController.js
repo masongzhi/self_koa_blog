@@ -50,9 +50,12 @@ class ArticleController {
   }
 
   // 用于masongzhi.github.io/react-image-crop-upload演示
-  static async testUpload(ctx) {}
+  static async testUpload(ctx) {
+    ctx.set('Access-Control-Allow-Origin', '*');
+  }
 
   static async getQiniuToken(ctx) {
+    ctx.set('Access-Control-Allow-Origin', '*');
     const token = await UserService.getQiniuToken();
     ctx.body = { token };
   }
