@@ -1,6 +1,7 @@
 const { User } = require('../model');
 const AppError = require('../lib/AppError');
 const bcrypt = require('bcrypt');
+const qiniu = require('qiniu');
 
 class UserService {
   async register(param) {
@@ -18,6 +19,19 @@ class UserService {
       throw new AppError('密码不正确，请重新输入');
     }
     return user;
+  }
+
+  async getQiniuToken() {
+    const accessKey = process.env.ACCESS_KEY;
+    const secretKey = process.env.SECRET_KEY;
+    const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+
+    const options = {
+      scope: 'blog-avatar',
+    };
+    const putPolicy = new qiniu.rs.PutPolicy(options);
+    const token = putPolicy.uploadToken(mac);
+    return token;
   }
 }
 

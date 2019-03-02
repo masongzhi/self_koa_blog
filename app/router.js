@@ -31,5 +31,6 @@ router.get('/public/article', ArticleController.getArticles);
 router.get('/public/article/:id', ArticleController.getArticle);
 router.get('/public/comment/get', CommentController.get);
 router.post('/public/testUpload', UserController.testUpload);
+router.get('/public/getQiniuToken', UserController.getQiniuToken);
 
 module.exports = router;

@@ -49,7 +49,13 @@ class ArticleController {
     };
   }
 
+  // 用于masongzhi.github.io/react-image-crop-upload演示
   static async testUpload(ctx) {}
+
+  static async getQiniuToken(ctx) {
+    const token = await UserService.getQiniuToken();
+    ctx.body = { token };
+  }
 }
 
 module.exports = ArticleController;
