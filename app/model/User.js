@@ -6,6 +6,7 @@ class User extends BaseModel {
     super();
     this.name = 'user';
     this.schema = {
+      avatar: { type: String },
       email: { type: String, required: true },
       username: { type: String, required: true },
       password: {
