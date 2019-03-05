@@ -7,6 +7,7 @@ function genToken(user) {
     username: user.username,
     // email: user.email,
     role: user.role,
+    avatar: user.avatar,
   };
   const token = jwt.sign(jwtdata, Const.TOKEN_SECRET, { expiresIn: '365d' });
   return token;

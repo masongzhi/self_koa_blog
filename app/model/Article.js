@@ -13,6 +13,7 @@ class Article extends BaseModel {
       likes: { type: Number, default: 0 },
       views: { type: Number, default: 0 },
       comments: { type: Number, default: 0 },
+      author: { type: Object, required: true },
     };
   }
 }

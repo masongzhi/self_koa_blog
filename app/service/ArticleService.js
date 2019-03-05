@@ -4,7 +4,7 @@ const { Article } = require('../model');
 class ArticleService {
   async getArticles({ page = 1, limit = 10 }) {
     let query = {};
-    const select = 'time likes views title summary label comments';
+    const select = 'time likes views title summary label comments author';
     const options = { sort: '-_id', leanWithId: true, page, limit, select };
     const result = await Article.paginate(query, options);
     return result;

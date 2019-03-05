@@ -26,7 +26,7 @@ class ArticleController {
       label: Joi.array().items(Joi.string()),
     };
     const value = Joi.validate(ctx.request.body, schema);
-    const result = await ArticleService.setArticle(value);
+    const result = await ArticleService.setArticle({ ...value, author: ctx.state.user });
 
     ctx.body = result;
   }
