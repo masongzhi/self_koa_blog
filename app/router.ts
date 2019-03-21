@@ -4,7 +4,7 @@ const { allow } = require('./middleware/AuthValidate');
 const ArticleController = require('./controller/ArticleController');
 const CommentController = require('./controller/CommentController');
 const UserController = require('./controller/UserController');
-const { Const } = require('./lib');
+import { Const } from './lib';
 
 const router = require('koa-router')({
   prefix: Const.PREFIX,

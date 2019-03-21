@@ -1,4 +1,4 @@
-const BaseModel = require('./BaseModel');
+import BaseModel from './BaseModel';
 
 class Article extends BaseModel {
   constructor() {
@@ -18,4 +18,4 @@ class Article extends BaseModel {
   }
 }
 
-module.exports = new Article().init();
+export default new Article().init();

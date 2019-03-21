@@ -1,4 +1,4 @@
-const { Article } = require('../model');
+import { Article } from '../model';
 // const AppError = require('../lib/AppError');
 
 class ArticleService {
@@ -47,4 +47,4 @@ class ArticleService {
   }
 }
 
-module.exports = new ArticleService();
+export default new ArticleService();

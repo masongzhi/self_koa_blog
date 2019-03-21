@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "outDir": "build",
+    "baseUrl": "."
+  },
+  "include": ["app/**/*"],
+  "exclude": ["node_modules"]
+}

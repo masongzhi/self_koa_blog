@@ -1,7 +1,7 @@
 const Moment = require('moment-timezone');
 Moment.tz.setDefault('Asia/Shanghai');
 
-module.exports = {
+const DateUtil = {
   /**
    * Get current time's Moment object with timezone,
    * if not pass timezone, use the app's default timezone
@@ -67,4 +67,5 @@ module.exports = {
     return day;
   },
 };
-const self = module.exports;
+const self = DateUtil;
+export default DateUtil;

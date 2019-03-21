@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   TOKEN_SECRET: 'self_koa_blog',
   TOKEN_CONFIG: {
     path: '/', // 写cookie所在的路径

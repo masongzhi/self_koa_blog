@@ -1,7 +1,7 @@
-const _ = require('lodash');
-const { AppError, Logger } = require('../lib');
+import * as _ from 'lodash';
+import { AppError, Logger } from '../lib';
 
-module.exports = pattern => {
+export default pattern => {
   return async (ctx, next) => {
     const reg = new RegExp(pattern);
     // 符合相应规则才格式化返回 例如: ^/api

@@ -1,5 +1,5 @@
-const ArticleService = require('../service/ArticleService');
-const { Joi } = require('../lib');
+import ArticleService from '../service/ArticleService';
+import { Joi } from '../lib';
 
 class ArticleController {
   static async getArticles(ctx) {
@@ -90,4 +90,4 @@ class ArticleController {
   }
 }
 
-module.exports = ArticleController;
+export default ArticleController;

@@ -1,12 +1,14 @@
 {
   "name": "self_koa_blog",
   "version": "0.0.1",
-  "description": "个人blog后端",
-  "main": "index.js",
+  "description": "back-end of personal blog",
+  "main": "index.ts",
   "scripts": {
     "start": "node index.js",
-    "dev": "NODE_ENV=dev nodemon -w ./app/ index.js",
-    "format": "prettier --write 'app/**/*.js'"
+    "dev": "NODE_ENV=dev nodemon -w ./app/ --ignore 'src/**/*.spec.ts'  --exec './node_modules/.bin/ts-node' index.ts",
+    "format": "prettier --write 'app/**/*.js'",
+    "build": "./node_modules/.bin/tsc -p ./",
+    "tslint": "./node_modules/.bin/tslint -c tslint.json 'app/**/*.ts' --fix"
   },
   "repository": {
     "type": "git",
@@ -33,12 +35,21 @@
     "tracer": "^0.8.12"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.26",
+    "@types/joi": "^14.3.2",
+    "@types/lodash": "^4.14.123",
+    "@types/mongodb": "^3.1.22",
+    "@types/mongoose": "^5.3.23",
     "husky": "^1.0.0-rc.13",
     "mocha": "^5.0.4",
     "prettier": "^1.14.3",
     "pretty-quick": "^1.7.0",
     "should": "^13.2.1",
-    "supertest-as-promised": "^4.0.2"
+    "supertest-as-promised": "^4.0.2",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.14.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.3.4000"
   },
   "husky": {
     "hooks": {

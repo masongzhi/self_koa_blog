@@ -1,22 +1,28 @@
-const uniqueValidator = require('mongoose-unique-validator');
-const mongoosePaginate = require('mongoose-paginate');
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import uniqueValidator from 'mongoose-unique-validator';
+import mongoosePaginate from 'mongoose-paginate';
+import { Document, Types, Schema } from 'mongoose';
+import dbs from '../../config/initializer';
+const db = dbs.get('blog');
 
 const ObjectId = function(id) {
-  return mongoose.Types.ObjectId(id);
+  return Types.ObjectId(id);
 };
 
-class BaseModel {
+class BaseModel extends Document {
+  schema: any;
+  name: string;
+  statics?: object;
+  methods?: object;
   constructor() {
-    this.schema = null;
-    this.statics = null;
-    this.methods = null;
+    super();
+    this.schema = {};
+    this.statics = {};
+    this.methods = {};
   }
 
   init() {
-    const _schema = new Schema(this.schema);
-    const _db = require('../../config/initializer').dbs.get('blog');
+    const _schema: Schema = new Schema(this.schema);
+    const _db = db;
 
     _schema.set('timestamps', true); // createAt, updatedAt -> UTC
     _schema.set('minimize', false); // Mongoose will, by default, "minimize" schemas by removing
@@ -44,4 +50,4 @@ class BaseModel {
   }
 }
 
-module.exports = BaseModel;
+export default BaseModel;

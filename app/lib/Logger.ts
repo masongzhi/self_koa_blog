@@ -1,5 +1,5 @@
-const tracer = require('tracer');
-const config = require('config');
+import * as tracer from 'tracer';
+import * as config from 'config';
 
 const logger = tracer.dailyfile({
   root: config.get('root') + '/log',
@@ -11,4 +11,4 @@ const logger = tracer.dailyfile({
   },
 });
 
-module.exports = logger;
+export default logger;

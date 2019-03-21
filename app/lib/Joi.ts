@@ -1,6 +1,6 @@
-const Joi = require('joi');
+import * as Joi from 'joi';
 const validate = Joi.validate;
-const _ = require('lodash');
+import * as _ from 'lodash';
 
 Joi.validate = (
   value,
@@ -18,4 +18,4 @@ Joi.validate = (
   return result;
 };
 
-module.exports = Joi;
+export default Joi;

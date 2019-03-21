@@ -1,6 +1,8 @@
 const util = require('util');
 
 class AppError extends Error {
+  static ERRORS: object;
+  code: number;
   constructor() {
     super();
     const args = Array.prototype.slice.call(arguments);
@@ -27,4 +29,4 @@ const ErrorInfo = {
 };
 
 AppError.ERRORS = ErrorInfo;
-module.exports = AppError;
+export default AppError;
