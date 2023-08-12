@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   application: 'self-koa_blog',
@@ -8,16 +8,16 @@ module.exports = {
   database: {
     redis: {
       host: 'localhost',
-      port: '6379'
+      port: '6380',
     },
     mongoDebug: true,
     mongodb: [
       {
-        name: 'blog',
-        url: 'mongodb://localhost:27017/blog',
-        options: {}
-      }
-    ]
+        name: 'mp',
+        url: `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/admin`,
+        options: {},
+      },
+    ],
   },
-  port: 3002
-}
+  port: 4000,
+};

@@ -1,0 +1,22 @@
+show collections
+show table
+show dbs
+db.col.insert({a:1})
+db.col.insert({ title: 'MongoDB 教程', description: 'MongoDB 是一个 Nosql 数据库', by: '菜鸟教程', url: 'http://www.runoob.com', tags: ['mongodb', 'database', 'NoSQL'], likes: 100 })
+show dbs
+use admin
+use aa
+use test
+use admin
+use local
+show dbs
+show tables
+show collections
+use admin
+show collections
+use database
+show collections
+show collections.
+show collections
+show dbs
+db.createCollection('mp')i')

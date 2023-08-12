@@ -16,7 +16,7 @@ class BaseModel {
 
   init() {
     const _schema = new Schema(this.schema);
-    const _db = require('../../config/initializer').dbs.get('blog');
+    const _db = require('../../config/initializer').dbs.get('mp');
 
     _schema.set('timestamps', true); // createAt, updatedAt -> UTC
     _schema.set('minimize', false); // Mongoose will, by default, "minimize" schemas by removing

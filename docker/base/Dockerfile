@@ -1,6 +1,6 @@
-FROM node:10
+FROM node:14
 WORKDIR /app
 COPY ./package.json .
-COPY ./yarn.lock .
+COPY ./package-lock.json .
 
-RUN npm install -g yarn && yarn install
+RUN npm i

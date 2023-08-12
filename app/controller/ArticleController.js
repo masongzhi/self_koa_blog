@@ -11,7 +11,7 @@ class ArticleController {
     const result = await ArticleService.getArticles(value);
 
     ctx.body = result;
-  }
+  } 
 
   static async getArticle(ctx) {
     const result = await ArticleService.getArticle(ctx.params);

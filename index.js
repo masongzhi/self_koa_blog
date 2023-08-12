@@ -12,12 +12,12 @@ const { validate } = require('./app/middleware/AuthValidate');
 require('./config/initializer');
 
 // jwt验证
-app.use(
-  validate({
-    path: Const.VALIDATE_PATH,
-    tokenSecret: Const.TOKEN_SECRET,
-  })
-);
+// app.use(
+//   validate({
+//     path: Const.VALIDATE_PATH,
+//     tokenSecret: Const.TOKEN_SECRET,
+//   })
+// );
 
 app.use(bodyParser());
 app.use(router.routes(), router.allowedMethods());

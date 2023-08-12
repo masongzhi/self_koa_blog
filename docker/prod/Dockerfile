@@ -2,5 +2,5 @@ FROM masongzhi/self-koa-blog-base
 WORKDIR /app
 COPY . .
 ENV TZ=Asia/Shanghai
-CMD ["yarn", "start"]
-EXPOSE 3002
+CMD ["npm", "start"]
+EXPOSE 4000
